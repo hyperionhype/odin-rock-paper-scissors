@@ -16,19 +16,6 @@ let computerSelection = computerPlay();
 let win = 'You Win!';
 let lose = 'You Lose!';
 let tie = "It's a tie!";
-let playerScore = 0;
-let computerScore = 0;
-let gameWinner = '';
-
-function gameWin() {
-	if (playerScore > computerScore) {
-		gameWinner = 'You Win!';
-		return gameWinner;
-	} else if (playerScore < computerScore) {
-		gameWinner = 'Computer Wins!';
-		return gameWinner;
-	}
-}
 
 function playRound(playerSelection, computerSelection) {
 	if (playerSelection === computerSelection) {
@@ -51,6 +38,20 @@ function playRound(playerSelection, computerSelection) {
 	} else if (playerSelection === 'paper' && computerSelection === 'scissors') {
 		computerScore++;
 		return `${lose}, Scissors beats Paper!`;
+	}
+}
+
+let playerScore = 0;
+let computerScore = 0;
+let gameWinner = '';
+
+function gameWin() {
+	if (playerScore > computerScore) {
+		gameWinner = 'You Win!';
+		return gameWinner;
+	} else if (playerScore < computerScore) {
+		gameWinner = 'Computer Wins!';
+		return gameWinner;
 	}
 }
 
