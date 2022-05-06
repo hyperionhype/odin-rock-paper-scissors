@@ -1,14 +1,3 @@
-function computerPlay() {
-	const randomItems = Math.floor(Math.random() * 3 + 1);
-
-	if (randomItems === 1) {
-		return 'rocks';
-	} else if (randomItems === 2) {
-		return 'paper';
-	} else if (randomItems === 3) {
-		return 'scissors';
-	}
-}
 //variable global scope ALWAYS PUT HERE FOR EASY SEARCH!
 let computerSelection = '';
 let playerSelection = '';
@@ -21,6 +10,18 @@ let playerScore = 0; // value change on playRound()
 let computerScore = 0; // value change on playRound()
 let whoWin = ''; // value change on gameWinner()
 let round = 0; // value change on game()
+
+function computerPlay() {
+	const randomItems = Math.floor(Math.random() * 3 + 1);
+
+	if (randomItems === 1) {
+		return 'rocks';
+	} else if (randomItems === 2) {
+		return 'paper';
+	} else if (randomItems === 3) {
+		return 'scissors';
+	}
+}
 
 function playRound(playerSelection, computerSelection) {
 	computerSelection = computerPlay();
