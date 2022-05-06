@@ -10,6 +10,7 @@ let playerScore = 0; // value change on playRound()
 let computerScore = 0; // value change on playRound()
 let whoWin = ''; // value change on gameWinner()
 let round = 0; // value change on game()
+let finalScore = ''; // value change on final score()
 
 function computerPlay() {
 	const randomItems = Math.floor(Math.random() * 3 + 1);
@@ -51,6 +52,16 @@ function playRound(playerSelection, computerSelection) {
 	}
 }
 
+function finaleScore() {
+	if (playerScore > computerScore) {
+		finalScore = 'For the Player!';
+		return finalScore;
+	} else if (playerScore < computerScore) {
+		finalScore = 'For the Computer!';
+		return finalScore;
+	}
+}
+
 function gameWinner() {
 	if (playerScore > computerScore) {
 		whoWin = 'You Win!';
@@ -70,7 +81,7 @@ function game() {
 		console.log(`Round ${round}`);
 		console.log(playRound(playerSelection, computerSelection));
 	}
-	console.log(`Final Score: ${playerScore} - ${computerScore}`);
+	console.log(`Final Score: ${playerScore} - ${computerScore} ${finaleScore()}`);
 	console.log(gameWinner());
 }
 
