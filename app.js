@@ -9,17 +9,26 @@ function computerPlay() {
 		return 'scissors';
 	}
 }
-
-let playerSelection = window.prompt("What's your pick?", 'Rocks or Paper or Scissors').toLowerCase();
-let computerSelection = computerPlay();
-
-let win = 'You Win!';
-let lose = 'You Lose!';
-let tie = "It's a tie!";
+//variable global scope ALWAYS PUT HERE FOR EASY SEARCH!
+let computerSelection = '';
+let playerSelection = '';
+let playerInput;
+let compInput;
+let win = 'You Win!'; // for playRound()
+let lose = 'You Lose!'; // for playRound()
+let tie = "It's a tie!"; // for playRound()
+let playerScore = 0; // value change on playRound()
+let computerScore = 0; // value change on playRound()
+let whoWin = ''; // value change on gameWinner()
+let round = 0; // value change on game()
 
 function playRound(playerSelection, computerSelection) {
+	computerSelection = computerPlay();
+	playerSelection = window.prompt("What's your pick?", 'Rocks or Paper or Scissors').toLowerCase();
+	playerInput = playerSelection;
+	compInput = computerSelection;
 	if (playerSelection === computerSelection) {
-		return `${tie}`;
+		return `${tie} You both pick ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)}!`;
 	} else if (playerSelection === 'rocks' && computerSelection === 'scissors') {
 		playerScore++;
 		return `${win}, Rocks beats Scissors!`;
@@ -41,28 +50,30 @@ function playRound(playerSelection, computerSelection) {
 	}
 }
 
-let playerScore = 0;
-let computerScore = 0;
-let gameWinner = '';
-
-function gameWin() {
+function gameWinner() {
 	if (playerScore > computerScore) {
-		gameWinner = 'You Win!';
-		return gameWinner;
+		whoWin = 'You Win!';
+		return whoWin;
 	} else if (playerScore < computerScore) {
-		gameWinner = 'Computer Wins!';
-		return gameWinner;
+		whoWin = 'Computer Wins!';
+		return whoWin;
+	} else if (playerScore === computerScore) {
+		whoWin = 'No one wins!';
+		return whoWin;
 	}
 }
 
 function game() {
 	for (let i = 0; i < 5; i++) {
-		console.log(playRound(playerSelection, computerPlay()));
-		window.prompt("What's your pick?", 'Rocks or Paper or Scissors');
+		round++;
+		console.log(`Round ${round}`);
+		console.log(playRound(playerSelection, computerSelection));
 	}
-	console.log('Player Score', playerScore);
-	console.log('Computer Score', computerScore);
-	console.log(gameWin());
+	console.log(`Final Score: ${playerScore} - ${computerScore}`);
+	console.log(gameWinner());
 }
 
 game();
+
+//for checking input
+// console.log(`You pick ${playerInput} - Computer pick ${compInput}`);
