@@ -62,7 +62,7 @@ function finaleScore() {
 		finalScore = 'For the Computer!';
 		return finalScore;
 	} else if (playerScore === computerScore) {
-		finalScore = 'For Both Side!'
+		finalScore = 'For Both Side!';
 		return finalScore;
 	}
 }
@@ -93,7 +93,7 @@ function game() {
 	console.log(gameWinner());
 
 	if (playerScore === computerScore) {
-		console.log("Let's go for second game! We need winner to end this loop!")
+		console.log("Let's go for second game! We need winner to end this loop!");
 		game();
 	}
 }
